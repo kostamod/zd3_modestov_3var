@@ -1,0 +1,77 @@
+﻿<Window x:Class="modestov_zad3_var3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:modestov_zad3_var3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" Margin="0,0,10,0">
+            <StackPanel>
+                <TextBlock Text="Параметры отдела" FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Название отдела:"/>
+                <TextBox x:Name="TxtName" Margin="0,2,0,8"/>
+
+                <TextBlock Text="Базовый оклад:"/>
+                <TextBox x:Name="TxtSalary" Margin="0,2,0,8"/>
+
+                <TextBlock Text="Коэффициент:"/>
+                <TextBox x:Name="TxtCoefficient" Margin="0,2,0,8"/>
+
+                <TextBlock Text="Корпус / Локация:"/>
+                <TextBox x:Name="TxtLocation" Margin="0,2,0,8"/>
+
+                <TextBlock Text="Кол-во сотрудников:"/>
+                <TextBox x:Name="TxtCount" Margin="0,2,0,8"/>
+
+                <CheckBox x:Name="ChkIsDetailed" Content="Отдел с вредностью (потомок)" Margin="0,2,0,8"
+                          Checked="ChkIsDetailed_Changed" Unchecked="ChkIsDetailed_Changed"/>
+
+                <StackPanel x:Name="PanelDetailed" Visibility="Collapsed">
+                    <TextBlock Text="Вредность P (от 0 до 3):"/>
+                    <TextBox x:Name="TxtHazard" Margin="0,2,0,8"/>
+
+                    <TextBlock Text="ФИО Руководителя:"/>
+                    <TextBox x:Name="TxtHead" Margin="0,2,0,8"/>
+                </StackPanel>
+
+                <Button Content="Добавить отдел" Click="BtnAdd_Click" Height="28" Margin="0,5,0,5"/>
+                <Button Content="Удалить выбранный" Click="BtnDelete_Click" Height="28" Margin="0,0,0,15" Background="#FFF0F0"/>
+
+                <Border BorderBrush="LightGray" BorderThickness="0,1,0,0" Padding="0,10,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Фильтр LINQ (Мин. оклад):"/>
+                        <Grid Margin="0,2,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="65"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="TxtMinSalary" Grid.Column="0" Margin="0,0,5,0" VerticalContentAlignment="Center"/>
+                            <Button Content="Поиск" Grid.Column="1" Click="BtnFilter_Click" Height="22"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+              
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ListBox x:Name="LstDepartments" Grid.Row="0" DisplayMemberPath="Informaciya"/>
+
+            <TextBlock x:Name="TxtStatus" Grid.Row="1" Margin="0,5,0,0" Foreground="Red" FontWeight="SemiBold"/>
+        </Grid>
+    </Grid>
+</Window>
+
